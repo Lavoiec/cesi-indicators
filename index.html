@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8"/>
+<!-- Load c3.css -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.12/c3.css", rel="stylesheet"></link>
+<!-- Load d3.js and c3.js -->
+<script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.12/c3.min.js", charset="utf-8"></script>
+
+</head>
+
+<body>
+    <h3>Key Results</h3>
+    <ul>
+      <li>Canada's total greenhouse gas emissions in 2016 were 704 megatonnes (Mt) of carbon dioxide equivalent (CO2 eq).</li>
+      <li>The recent decrease in emissions was primarily driven by reduced emissions from the electricity generation sector.</li>
+    </ul>
+    <h4>Greenhouse gas emissions, Canada, 1990 to 2016</h4>
+    <div id="webchart"></div>
+    <h4>Greenhouse gas emissions by province and territory, Canada, 1990, 2005 and 2016</h4>
+    <div id="regionalchart"></div>
+    <h4>Air pollutant emissions, Canada, 1990 to 2016 </h4>
+    <p>Percent change from 1990 level.</p>
+    <div id="otherchart"></div>
+    <script>
+
+
+var webchart = c3.generate({
+  bindto: '#webchart',
+  data: {
+    x: 'Year',
+  columns: [
+  ['Year',1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016],
+  ['Total greenhouse gas emissions (megatonnes of carbon dioxide equivalent)',603,596,613,614,635,652,673,688,696,709,732,721,725,742,744,732,723,745,724,682,694,700,707,716,716,714,704]
+  ],
+
+  }
+});
+
+
+var regionalchart = c3.generate({
+  bindto: '#regionalchart',
+  data: {
+    x: 'Province or territory',
+    columns: [
+['Province or territory','Newfoundland and Labrador (NL)','Prince Edward Island (PE)','Nova Scotia (NS)','New Brunswick (NB)','Quebec (QC)','Ontario (ON)','Manitoba (MB)','Saskatchewan (SK)','Alberta (AB)','British Columbia (BC)','Yukon (YT)','Northwest Territories (NT)','Nunavut (NU)'],
+[1990,9.3,1.9,19.6,16.1,86.6,179.2,18.3,44.7,174.1,51.1,0.5,1.6],
+[2005,9.9,2,23.2,20.1,86.5,204.7,20.2,68.9,231,63.3,0.5,1.6,0.4],
+[2016,10.8,1.8,15.6,15.3,77.3,160.6,20.9,76.3,262.9,60.1,0.4,1.6,0.7]
+
+  ],
+    type: 'bar'
+  },
+  axis: {
+    x: {
+      type: 'category'
+    }
+  }
+});
+
+var otherchart = c3.generate({
+bindto: '#otherchart',
+data: {
+  columns: [
+    ['Year',1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016],
+    ['Sulphur oxides (percentage change from 1990 level)',0,-7,-11,-14,-21,-16,-16,-18,-19,-22,-22,-22,-24,-26,-27,-29,-35,-37,-43,-52,-55,-58,-58,-58,-60,-65,-65],
+    ['Nitrogen oxides (percentage change from 1990 level)',0,-4,-2,0,5,8,11,17,19,22,21,15,13,11,5,2,-4,-3,-7,-13,-11,-13,-17,-18,-19,-22,-25],
+    ['Volatile organic compounds (percentage change from 1990 level)',0,-2,-2,1,2,2,1,-1,-1,-3,-6,-14,-14,-17,-19,-23,-27,-28,-30,-35,-34,-39,-38,-37,-36,-39,-42],
+    ['Ammonia (percentage change from 1990 level)',0,-1,2,3,7,11,15,17,17,17,20,21,24,22,26,25,22,23,20,16,15,14,18,21,20,20,20],
+    ['Carbon monoxide (percentage change from 1990 level)',0,-2,-3,0,0,-1,-4,-8,-8,-10,-12,-19,-20,-23,-27,-35,-39,-41,-42,-45,-46,-49,-51,-52,-53,-53,-54],
+    ['Fine particulate matter (percentage change from 1990 level)',0,-2,-5,-5,-3,-7,-7,-6,-13,-13,-15,-17,-19,-21,-23,-24,-24,-21,-18,-25,-20,-19,-15,-16,-16,-18,-18],
+  ],
+  x: 'Year',
+  type: 'line'
+}
+
+});
+    </script>
+
+
+
+</body>
